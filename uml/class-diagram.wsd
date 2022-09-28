@@ -1,0 +1,14 @@
+@startuml
+
+entity Product
+
+Product : uuid id
+Product : description string
+Product : amount number
+Product : value number
+
+Product : create()
+Product : update()
+Product : delete()
+
+@enduml

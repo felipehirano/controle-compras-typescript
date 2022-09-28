@@ -1,3 +1,32 @@
+export type ProductProps = {
+  description: string;
+  amount: number;
+  value: number;
+};
 export default class Product {
-  constructor(public description: string) {}
+  constructor(public readonly props: ProductProps) {}
+
+  get description(): string {
+    return this.props.description;
+  }
+
+  private set description(desc: string) {
+    this.props.description = desc;
+  }
+
+  get amount(): number {
+    return this.props.amount;
+  }
+
+  private set amount(amount: number) {
+    this.props.amount = amount;
+  }
+
+  get value(): number {
+    return this.props.value;
+  }
+
+  private set value(value: number) {
+    this.props.value = value;
+  }
 }
