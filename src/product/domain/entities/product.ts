@@ -1,10 +1,16 @@
+import UniqueEntityId from "../../../@seedwork/domain/vo/unique-entity-id.vo";
+
 export type ProductProps = {
   description: string;
   amount: number;
   value: number;
 };
 export default class Product {
-  constructor(public readonly props: ProductProps) {}
+  public readonly id?: UniqueEntityId;
+
+  constructor(public readonly props: ProductProps, id?: UniqueEntityId) {
+    this.id = id || new UniqueEntityId();
+  }
 
   get description(): string {
     return this.props.description;
