@@ -9,6 +9,12 @@ function spyValidateMethod() {
 describe("Unique Entity ID ValueObject Unit Tests", () => {
   const validateSpy = spyValidateMethod();
 
+  beforeEach(() => {
+    // Não seria necessário, pois na config do jest o clear mocks está setado como true.
+    // Estou deixando por aqui, apenas para lembranca de que seria necessário limpar os mocks a cada teste.
+    jest.clearAllMocks();
+  });
+
   it("should constructor of unique entity id value object with invalid id param", () => {
     expect(() => new UniqueEntityId("123456")).toThrow(new InvalidUuidError());
     expect(validateSpy).toHaveBeenCalled();
