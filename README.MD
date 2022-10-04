@@ -21,3 +21,19 @@
 - To create the jest.config.ts i ran the comand `npx jest --init`;
 - To install SWC i ran the comand `npm install @swc/core @swc/jest --save-dev`;
 - I changed the rootDir of jest.config.ts to src folder, set testRegex to watch the test files and set the transofm properties to compile these files with SWC;
+
+# Setting devcontainer.json
+
+- In the prop settings i setted terminal.integrated.defaultProfile.linux to bash, because when i enter in the terminal of the container, the bash will be the default terminal.
+- I changed the workspaceFolder to /home/node/app the same directory of my docker-compose.yaml
+
+# Setting docker-compose.yml of .devcontainer
+
+- I changed the volumes to /home/node/app the same directory of my docker-compose.yaml
+
+# Setting git
+
+- In dockerfile, i run the command to install git
+- In remote container of vscode settings, i added the default extentions that i will use when the container up
+- Again in the dockerfile, i added the ca-certificates because this git version doesn's has the certificateds.
+
