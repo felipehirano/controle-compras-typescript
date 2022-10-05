@@ -37,3 +37,11 @@
 - In remote container of vscode settings, i added the default extentions that i will use when the container up
 - Again in the dockerfile, i added the ca-certificates because this git version doesn's has the certificateds.
 
+# Sonnar lint
+
+- In remote container of vscode settings, i added the default extentions that i will use when the container up
+- To use sonnar lint i had to install java, so in our image(dockerfile) changed this file to create the folder
+/usr/share/man/man1;
+- And added the command ``` echo 'deb http://ftp.debian.org/debian stretch-backports main' | tee /etc/apt/sources.list.d/stretch-backports.list``` to update packages and finde openjdk11;
+- And install the openjdk-11-jre setting the java_home;
+
