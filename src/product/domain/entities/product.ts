@@ -1,4 +1,4 @@
-import UniqueEntityId from "../../../@seedwork/domain/vo/unique-entity-id.vo";
+import UniqueEntityId from "../../../@seedwork/domain/value-objects/unique-entity-id.vo";
 
 export type ProductProps = {
   description: string;

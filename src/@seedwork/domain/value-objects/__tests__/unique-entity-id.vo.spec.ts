@@ -25,14 +25,14 @@ describe("Unique Entity ID ValueObject Unit Tests", () => {
       "0d09ec22-d5e7-491a-8772-1a9475f46fbd"
     );
 
-    expect(uuidValidate(uniqueEntityId.id)).toBeTruthy();
+    expect(uuidValidate(uniqueEntityId.value)).toBeTruthy();
     expect(validateSpy).toHaveBeenCalled();
   });
   it("should constructor of unique entity id value object without params", () => {
     const uniqueEntityId = new UniqueEntityId();
 
-    expect(uniqueEntityId.id).not.toBeNull();
-    expect(uuidValidate(uniqueEntityId.id)).toBeTruthy();
+    expect(uniqueEntityId.value).not.toBeNull();
+    expect(uuidValidate(uniqueEntityId.value)).toBeTruthy();
     expect(validateSpy).toHaveBeenCalled();
   });
 
