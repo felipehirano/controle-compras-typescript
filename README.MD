@@ -21,6 +21,7 @@
 - To create the jest.config.ts i ran the comand `npx jest --init`;
 - To install SWC i ran the comand `npm install @swc/core @swc/jest --save-dev`;
 - I changed the rootDir of jest.config.ts to src folder, set testRegex to watch the test files and set the transofm properties to compile these files with SWC;
+- In the devcontainer.json, i added the extension `firsttris.vscode-jest-runner`
 
 # Setting devcontainer.json
 
