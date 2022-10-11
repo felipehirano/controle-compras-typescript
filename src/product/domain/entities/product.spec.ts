@@ -63,4 +63,24 @@ describe("Product Unit Tests", () => {
     product["value"] = 10.2;
     expect(product.value).toBe(10.2);
   });
+
+  test('update a product', () => {
+    const product = new Product({
+      description: "descricao",
+      amount: 5,
+      value: 4.7,
+    });
+   
+    const updated = {
+      description: "teste",
+      amount: 4,
+      value: 7.7,
+    };
+
+    product.update(updated)
+
+    expect(product.description).toBe(updated.description);
+    expect(product.amount).toBe(updated.amount);
+    expect(product.value).toBe(updated.value);
+  });
 });

@@ -2,14 +2,20 @@ import Entity from "../../../@seedwork/domain/entity/entity";
 import UniqueEntityId from "../../../@seedwork/domain/value-objects/unique-entity-id.vo";
 
 export type ProductProps = {
-  description: string;
-  amount: number;
-  value: number;
+  description?: string;
+  amount?: number;
+  value?: number;
 };
 export default class Product extends Entity<ProductProps> {
 
   constructor(public readonly props: ProductProps, id?: UniqueEntityId) {
     super(props, id)
+  }
+
+  update(props: ProductProps) {
+    this.description = props.description;
+    this.amount = props.amount;
+    this.value = props.value;
   }
 
   get description(): string {
