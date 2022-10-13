@@ -53,6 +53,28 @@ describe("ValidatorRules Unit Tests", () => {
         });
     });
 
+    it('should throw that the value must be a number', () => {
+        const date = new Date();
+        const arrange = [
+            {},
+            {value: null, field: null},
+            {value: null, field: 'Null Field'},
+            {value: undefined, field: 'Undefined Field'},
+            {value: '5', field: 'Number field'},
+            {value: true, field: 'Boolean field'},
+            {value: false, field: 'Boolean field'},
+            {value: '0', field: 'Number field'},
+            {value: {}, field: 'Number field'},
+            {value: {prop: 1}, field: 'Number field'},
+            {value: date, field: 'Date field'}
+        ];
+
+        arrange.forEach((item) => {
+            expect(() => ValidatorRules.values(item.value, item.field).number())
+                .toThrow(`The ${item.field} must be a number`)
+        });
+    });
+
     it('should throw that the value must has the maxLenght', () => {
         const arrange = [
             {value: 'testee', field: 'String field'},

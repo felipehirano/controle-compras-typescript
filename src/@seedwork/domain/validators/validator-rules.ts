@@ -24,6 +24,13 @@ export default class ValidatorRules{
         return this;
     }
 
+    number(): this{
+        if(typeof this.value !== "number"){
+            throw new ValidationError(`The ${this.property} must be a number`)
+        }
+        return this;
+    }
+
     maxLength(max: number): this{
         if(this.value.length > max) {
             throw new ValidationError(`The ${this.property} must be less or equal than ${max} characters`)
@@ -32,5 +39,3 @@ export default class ValidatorRules{
     }
 
 }
-
-// ValidatorRules.required().string().maxLenght()

@@ -1,6 +1,13 @@
 import Product from "./product";
 import { omit } from "lodash";
 describe("Product Unit Tests", () => {
+
+  beforeEach(() => {
+    // Irá sobrescrever o método validate com um mock, para isolar o comportamento do método para
+    // não ser executado um teste de integracao, mas sim como teste unitario
+    Product.validate = jest.fn();
+  });
+
   test("constructor of product with valid props", () => {
     const product = new Product({
       description: "descricao",
@@ -8,6 +15,7 @@ describe("Product Unit Tests", () => {
       value: 4.7,
     });
     const props = omit(product.props, "id");
+    expect(Product.validate).toHaveBeenCalled();
     expect(props).toStrictEqual({
       description: "descricao",
       amount: 5,
@@ -78,7 +86,7 @@ describe("Product Unit Tests", () => {
     };
 
     product.update(updated)
-
+    expect(Product.validate).toHaveBeenCalledTimes(2);
     expect(product.description).toBe(updated.description);
     expect(product.amount).toBe(updated.amount);
     expect(product.value).toBe(updated.value);
