@@ -1,18 +1,32 @@
-import {ValidationError} from "../../../@seedwork/domain/errors/validation-error";
+import {ValidationError,EntityValidationError} from "../../../@seedwork/domain/errors/validation-error";
 import Product from "./product";
 
 describe('Product Integration Tests', () => {
 
     describe('create method', () => {
         it('should a invalid product when product is not passed', () => {
-            expect(() => new Product({description: null, amount: null, value: null}))
-                .toThrow(new ValidationError(`The description is required`))
+            // expect(() => new Product({description: null, amount: null, value: null}))
+            //     .toThrow(new EntityValidationError([] as any))
+
+            expect(() => new Product({description: null, amount: null, value: null})).containsErrorMessages(
+                {
+                    description: [ 'description should not be empty', 'description must be a string' ],
+                    amount: [
+                      'amount should not be empty',
+                      'amount must be a number conforming to the specified constraints'
+                    ],
+                    value: [
+                      'value should not be empty',
+                      'value must be a number conforming to the specified constraints'
+                    ]
+                }
+            );
             
-            expect(() => new Product({description: 'desc', amount: null, value: null}))
-                .toThrow(new ValidationError(`The amount is required`))
+            // expect(() => new Product({description: 'desc', amount: null, value: null}))
+            //     .toThrow(new ValidationError(`The amount is required`))
             
-            expect(() => new Product({description: 'desc', amount: 5, value: null}))
-                .toThrow(new ValidationError(`The value is required`))
+            // expect(() => new Product({description: 'desc', amount: 5, value: null}))
+            //     .toThrow(new ValidationError(`The value is required`))
         })
     
         it('should a invalid product when description is not string', () => {
