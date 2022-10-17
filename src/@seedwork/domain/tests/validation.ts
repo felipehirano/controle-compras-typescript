@@ -1,8 +1,14 @@
+// Custom Matcher, need to add this custom matcher in setupFilesAfterEnv that are in jest.cofig.ts. 
+// Create a definition type called jest.d.ts(/src) to typescript recognize this matcher.
+
 import { FieldsErrors } from "../validators/validator-fields-interface";
 import ClassValidatorFields from "../validators/class-validator-fields";
 import { EntityValidationError } from "../errors/validation-error";
 
 type Expected = {validator: ClassValidatorFields<any>, data: any} | (() => any);
+
+// expect({validator, data}).containErrorMessages;
+// expect(() => {}).containErrorMessages;
 
 expect.extend({
     containsErrorMessages(expected: Expected, received: FieldsErrors) {
@@ -28,6 +34,7 @@ expect.extend({
 });
 
 function isValid() {
+    // Retorno de um matcher segue essa estrutura
     return { pass: true, message: () => ""}
 }
 
@@ -35,7 +42,7 @@ function assertContainsErrors(expected:FieldsErrors, received:FieldsErrors) {
     const isMatch = expect.objectContaining(received).asymmetricMatch(expected);
     
     return isMatch 
-        ? { pass: true, message: () => ""} 
+        ? isValid() 
         : {
             pass: false, 
             message: () => `The validation errors not contains ${JSON.stringify(
