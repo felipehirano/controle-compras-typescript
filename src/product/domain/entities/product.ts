@@ -24,13 +24,7 @@ export default class Product extends Entity<ProductProps> {
   }
 
   // Quando o método não utiliza nada da classe, passe ele para static.
-  // Manobra para chamar o validate antes da chamada do super(); 
-  // static validate(props: ProductProps) {
-  //   ValidatorRules.values(props.description, 'description').required().string();
-  //   ValidatorRules.values(props.amount, 'amount').required().number();
-  //   ValidatorRules.values(props.value, 'value').required().number();
-  // }
-
+  // Manobra para chamar o validate antes da chamada do super();
   static validate(props: ProductProps) {
     const validator = ProductValidatorFactory.create();
     const isValid = validator.validate(props);
