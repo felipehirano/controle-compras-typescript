@@ -1,4 +1,3 @@
-import ValidatorRules from "../../../@seedwork/domain/validators/validator-rules";
 import Entity from "../../../@seedwork/domain/entity/entity";
 import UniqueEntityId from "../../../@seedwork/domain/value-objects/unique-entity-id.vo";
 import ProductValidatorFactory from "../../validators/product.validator";
