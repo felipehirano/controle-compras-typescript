@@ -1,6 +1,6 @@
-import { SearchParams } from "../repository-contracts";
+import { SearchParams, SearchResult } from "../repository-contracts";
 
-describe("RepositoryContracts Unit Tests", () => {
+describe("SearchParams Unit Tests", () => {
     test('page prop', () => {
         const arrange = [
             {page: null, expected: 1},
@@ -117,3 +117,94 @@ describe("RepositoryContracts Unit Tests", () => {
         });
     });
 })
+describe('SearchResult Unit Tests', () => {
+    test('constructor props', () => {
+        let result = new SearchResult({
+            items: ["entity1", "entity2"] as any,
+            total: 4,
+            current_page: 1,
+            per_page: 2,
+            sort: null,
+            sort_dir: null,
+            filter: null
+        });
+
+        expect(result.toJson()).toStrictEqual({
+            items: ["entity1", "entity2"] as any,
+            total: 4,
+            current_page: 1,
+            per_page: 2,
+            last_page: 2,
+            sort: null,
+            sort_dir: null,
+            filter: null
+        })
+
+        result = new SearchResult({
+            items: ["entity1", "entity2"] as any,
+            total: 4,
+            current_page: 1,
+            per_page: 2,
+            sort: "name",
+            sort_dir: "asc",
+            filter: "field"
+        });
+
+        expect(result.toJson()).toStrictEqual({
+            items: ["entity1", "entity2"] as any,
+            total: 4,
+            current_page: 1,
+            per_page: 2,
+            last_page: 2,
+            sort: "name",
+            sort_dir: "asc",
+            filter: "field"
+        })
+    });
+
+    it('should set last_page 1 when per_page field is greater than total, field', () => {
+        const result = new SearchResult({
+            items: ["entity1", "entity2"] as any,
+            total: 4,
+            current_page: 1,
+            per_page: 15,
+            sort: null,
+            sort_dir: null,
+            filter: null
+        });
+
+        expect(result.toJson()).toStrictEqual({
+            items: ["entity1", "entity2"] as any,
+            total: 4,
+            current_page: 1,
+            per_page: 15,
+            last_page: 1,
+            sort: null,
+            sort_dir: null,
+            filter: null
+        })
+    })
+
+    test('last_page prop when total is not a multiple of per_page', () => {
+        const result = new SearchResult({
+            items: ["entity1", "entity2"] as any,
+            total: 101,
+            current_page: 1,
+            per_page: 20,
+            sort: null,
+            sort_dir: null,
+            filter: null
+        });
+
+        expect(result.toJson()).toStrictEqual({
+            items: ["entity1", "entity2"] as any,
+            total: 101,
+            current_page: 1,
+            per_page: 20,
+            last_page: 6,
+            sort: null,
+            sort_dir: null,
+            filter: null
+        })
+    })
+});
