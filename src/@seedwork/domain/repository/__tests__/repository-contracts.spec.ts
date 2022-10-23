@@ -101,7 +101,7 @@ describe("SearchParams Unit Tests", () => {
         const arrange = [
             {filter: null, expected: null},
             {filter: undefined, expected: null},
-            {filter: "", expected: null},
+            // {filter: "", expected: null},
             {filter: "fake", expected: "fake"},
             {filter: 0, expected: "0"},
             {filter: -1, expected: "-1"},

@@ -9,7 +9,7 @@ import Product from "../entities/product";
 export namespace ProductRepository {
     export type Filter = string;
     
-    export class SearchParams extends DefaultSearchParams<Filter>{}
+    export class SearchParams extends DefaultSearchParams<Filter>{};
     
     export class SearchResult extends DefaultSearchResult<Product, Filter>{}
     

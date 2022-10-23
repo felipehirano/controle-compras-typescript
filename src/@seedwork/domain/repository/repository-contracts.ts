@@ -105,7 +105,7 @@ export class SearchParams<Filter> {
 
     private set filter(value: Filter | null) {
         this._filter = 
-            value === null || value === undefined || value === "" 
+            value === null || value === undefined 
             ? null 
             : `${value}` as any;
     }
