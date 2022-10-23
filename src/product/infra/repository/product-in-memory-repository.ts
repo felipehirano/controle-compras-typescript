@@ -1,7 +1,7 @@
 import Product from "../../../product/domain/entities/product";
 import {InMemorySearchableRepository} from "../../../@seedwork/domain/repository/in-memory-repository";
 import ProductRepository  from "../../../product/domain/repository/product-repository";
-import { SortDirection } from "@seedwork/domain/repository/repository-contracts";
+import { SortDirection } from "../../../@seedwork/domain/repository/repository-contracts";
 
 export default class ProductInMemoryRepository 
     extends InMemorySearchableRepository<Product> 

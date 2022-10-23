@@ -24,7 +24,7 @@ export type SearchProps<Filter = string> = {
  * tratamentos para que ela funcione corretamente.
  */
 
-export class SearchParams<Filter> {
+export class SearchParams<Filter = string> {
     protected _page: number;
     protected _per_page: number = 15;
     protected _sort: string | null;
