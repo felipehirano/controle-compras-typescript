@@ -1,5 +1,4 @@
 import Product from "../../../domain/entities/product";
-import ProductRepository from "../../../domain/repository/product-repository";
 import ProductInMemoryRepository from "../../../infra/repository/product-in-memory-repository";
 import ListProductsUseCase from "../list-products-use-case";
 
